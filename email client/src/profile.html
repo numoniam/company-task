@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile information</title>
+</head>
+<body>
+    <h1>Profile Information</h1>
+    <h2 id="name">User Name : </h2>
+    <h2 id="email">User Email : </h2>
+    <img id="image"/>
+    <button onclick="">Logout</button>
+</body>
+<script>
+     let currentLocation = new URL(window.location.href);
+    console.log(currentLocation);
+
+    const authorizationCode = Array.from(currentLocation.searchParams.values())[0];
+    console.log(authorizationCode);
+
+    const getAccessToken = `https://oauth2.googleapis.com/token?code=${authorizationCode}&redirect_uri=http://127.0.0.1:5500/src/profile.html&client_id=935730118226-2072l1nptia2n1rsqf462s38c43s66s2.apps.googleusercontent.com&client_secret=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&grant_type=authorization_code`
+    console.log(getAccessToken);
+
+    async function userInfo(){
+        let tokenValue = await fetch(getAccessToken, { method: 'post' })
+        let resultOfToken = await tokenValue.json();
+        console.log(resultOfToken);
+        
+        
+        let userInfo = await fetch(`https://www.googleapis.com/oauth2/v2/userinfo?access_token=${resultOfToken.access_token}`);
+        let resultOfUserInfo = await userInfo.json();
+
+        console.log(resultOfUserInfo);
+
+        document.getElementById('name').innerHTML += resultOfUserInfo.name;
+        document.getElementById('email').innerHTML += resultOfUserInfo.email;
+        document.getElementById('image').setAttribute('src', resultOfUserInfo.picture);
+
+        const createUser = await fetch("http://localhost:9000/api/v1/users", {
+            method:"POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(
+                {
+                    name: resultOfUserInfo.name,
+                    email: resultOfUserInfo.email,
+                    access_token: resultOfToken.access_token
+                }
+            ),
+        })
+
+        // const createUserInfo = await createUser.json();
+        return resultOfToken.access_token
+    }
+    const data=userInfo()
+    console.log(data,"=============");
+
+    // function logout() {
+    //     console.log(resultOfUserInfo);
+    //     fetch("https://oauth2.googleapis.com/revoke?token=" + resultOfUserInfo['access_token'],{
+    //         method:'POST',
+    //         headers:{
+    //            'Content-type':'application/x-www-form-urlencoded' 
+    //         }
+    //     })
+    //     .then((data)=>{
+    //         location.href="http://localhost:5500/index.html"
+    //     })
+
+    // }
+
+</script>
+</html>
