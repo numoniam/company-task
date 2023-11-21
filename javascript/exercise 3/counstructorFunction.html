@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        
+        function Savan()
+        {
+            var count=0;
+            this.incrementFunction=function(){
+                count++;
+                console.log(count);
+            }
+            this.decrementFunction=function(){
+                count--;
+                console.log(count);
+            }
+        }
+
+        let x=new Savan();
+        x.incrementFunction();
+
+        let y=new Savan();
+        y.incrementFunction();
+
+
+
+    </script>
+</body>
+
+</html>
