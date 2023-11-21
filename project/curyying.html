@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let multiply=function(x,y){
+            console.log(x*y);
+        }
+
+        let mutiplytwo=multiply.bind(this,2)
+        mutiplytwo(5)
+
+
+
+        //------------------------------------------
+
+
+        let sum=function(x){
+            return function(y)
+            {
+                console.log(x+y);
+            }
+        }
+
+        let savan=sum(3);
+        console.log(savan(5));
+
+
+        //------------------------------------------
+
+        function hello(x)
+        {
+            return function malhar(y)
+            {
+                console.log(x+y);
+            }
+        }
+
+        console.log(hello(10)(20));
+
+        //-------------------------------------------------------
+
+
+        let name={
+            fname:"dinkal",
+            sname:"Ghori"
+        }
+
+        let printname=function(){
+            console.log(this.fname + " "+this.sname);
+        }
+
+        let printMyName=printname.bind(name);
+
+        printMyName()
+
+        Function.prototype.mybind=function(...args){
+            let obj=this
+            return function(){
+              obj.call(args[0])
+            }
+        }
+
+        let print=printname.mybind(name)
+        console.log(print());
+    </script>
+</body>
+</html>

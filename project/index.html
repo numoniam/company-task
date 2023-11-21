@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span{
+            background-color: gold;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="savan" onkeydown="savan()">
+    <ul id="demo"></ul>
+    <script>
+        function savan() {
+
+            let search = document.getElementById("savan").value;
+
+            let data = [
+                "savan ghori",
+                "sagar sutariya",
+                "ravi pathar",
+                "malhar gadhiya",
+                "nency gadhiya",
+                "vivek dhameliya",
+                "tirh shah",
+                "yash solanki",
+                "dhruv gadhesariya",
+                "jupin lathiya",
+                "smit dholiya",
+                "manav timbadiya",
+                "shyamal parjapati",
+                "morgan patel"
+
+            ]
+
+            let size = search.length
+            if (size > 2) {
+                let result = []
+                for (let i in data) {
+
+                    if (data[i].includes(search)) {
+                        let str = ''
+                        str += data[i].slice(0, (data[i].indexOf(search)));
+                        str += `<span>`
+                        str += data[i].slice((data[i].indexOf(search)), ((data[i].indexOf(search)) + size));
+                        str += `</span>`
+                        str += data[i].slice(((data[i].indexOf(search)) + size), data[i].length)
+
+                        result.push(str)
+
+                    }
+
+                }
+                let html='';
+                for(let i=0;i<result.length;i++)
+                {
+                    html +=`<td>${result[i]}</td>`
+
+                }
+            
+
+                document.getElementById("demo").innerHTML=html;
+
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr=[1,2,3,4,5,6]
+
+        let object={
+            sayHi:function savan() {
+                console.log("object");
+
+                
+            }
+        }
+
+        let obj={
+            name:"savan",
+            age:22
+        }
+
+        let name="savan"
+        class User{
+            constructor()
+            {
+                this.name="savan"
+                this.age=22;
+            }
+
+            sayHi()
+            {
+                return `my name is ${this.name} and my age is ${this.age}`
+            }
+        }
+
+        let obj1=new User()
+
+        console.log(obj1.sayHi());
+    </script>
+    
+</body>
+</html>
