@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimeTracker</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!--StopWatch-->
+    <div>
+        <h1 style="text-align: center; text-transform: uppercase; font-size: 35px;">Time Tracker for Work Done</h1>
+    </div>
+    <div style="background-color: rgb(131, 176, 179); border-radius:10px; box-shadow: 5px 5px rgb(61, 114, 131);">
+
+        <div class="mainDiv">
+
+            <div>
+                <div class="container">
+
+                    <div style="font-size:larger;">
+                        Date:
+                    </div>
+
+                    <div>
+                        <div id="currentDate" style="font-size: larger;"></div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="timeDiv">
+
+                    <div style="font-size: larger;">
+                        CurrentTime:
+                    </div>
+
+                    <div>
+                        <div id="currentTime" style="font-size: larger;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div>
+            <div class="timeDiv">
+
+                <div style="font-size: larger;">
+                    Time:
+                </div>
+
+                <div>
+                    <div id="timer" style="font-size: larger;">00:00:00:00</div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="btnDiv">
+            <button class="startbtn" onclick="startTime()">Start</button>
+            <button class="stopbtn" onclick="stopTimer()">Stop</button>
+            <button class="resumebtn" onclick="resumeTimer()">Resume</button>
+            <button class="resetbtn" onclick="resetTimer()">Reset</button>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div id="done"></div>
+    <br>
+
+    <!--Todo List Code-->
+    <div>
+        <div class="savan">
+            <h1 style="text-transform: uppercase; font-size: 35px;">Todo List for Today</h1>
+        </div>
+
+        <div class="todo">
+            <input type="text" placeholder="Eneter todo list" class="input" id="input_data">
+            <button class="addbtn" onclick="adding()" id="btnadd">Add</button>
+        </div>
+    </div>
+    <br>
+    
+    <br>
+    <div>
+        <table id="tableShow">
+
+        </table>
+
+    </div>
+
+    <script>
+
+        let date = new Date()
+
+        //current date
+        let curDate = date.getDate()
+        let months = ['jan', 'feb', 'march', 'april', 'may', 'june', 'july', 'aug', 'sep', 'oct', 'nov', 'dec']
+        let curMonth = months[date.getMonth()]
+        let curYear = date.getFullYear()
+        let fullDate = curDate + "-" + curMonth + "-" + curYear;
+        document.getElementById("currentDate").innerHTML = fullDate
+
+
+        //current time
+        let hour = date.getHours();
+        let min = date.getMinutes();
+        let sec = date.getSeconds();
+        let milis = date.getMilliseconds()
+
+
+        let fullTime = hour + " hours:" + min + " mini:" + sec + " sec:" + milis + " milisec";
+        document.getElementById("currentTime").innerHTML = fullTime
+
+        let wsec = 0;
+        let wmin = 0;
+        let whour = 0;
+        let wmilisecond = 0;
+        let isStop = true
+        let count = 0;
+        function timeCycle() {
+            if (!isStop) {
+                wsec = parseInt(wsec);
+                wmin = parseInt(wmin);
+                whour = parseInt(whour);
+                wmilisecond = parseInt(wmilisecond);
+                count = parseInt(count);
+
+                count++
+
+                if (count == 100) {
+                    wsec = wsec + 1
+                    count = 0
+                }
+                if (wsec == 60) {
+                    wmin = wmin + 1;
+                    wsec = 0
+                }
+                if (wmin == 60) {
+                    whour = whour + 1;
+                    wsec = 0
+                    wmin = 0
+                }
+                if (wsec < 10) {
+                    wsec = "0" + wsec;
+                }
+                if (wmin < 10) {
+                    wmin = "0" + wmin;
+                }
+                if (whour < 10) {
+                    whour = "0" + whour;
+                }
+                if (wmilisecond < 10) {
+                    wmilisecond = "0" + wmilisecond;
+                }
+
+                document.getElementById("timer").innerHTML = whour + " :" + wmin + " :" + wsec + " :" + count;
+                setInterval(timeCycle, 100)
+                
+            }
+        }
+
+        function startTime() {
+            if(isStop){
+                isStop=false;
+                timeCycle()
+            }
+        }
+
+        function stopTimer(){
+            if(!isStop)
+            {
+                isStop=true
+            }
+        }
+
+        function resumeTimer()
+        {
+            startTime()
+        }
+
+        function resetTimer(){
+            document.getElementById("timer").innerHTML="00:00:00:00"
+            isStop=true;
+            wmin=0;
+            wsec=0
+
+        }
+
+        //todo_list
+        let arr_data = []
+
+        function adding() {
+            let value = document.getElementById("input_data").value;
+            arr_data.push(value);
+            showData();
+            document.getElementById("input_data").value = ''
+        }
+
+        function showData() {
+            let html = ''
+            arr_data.forEach((data, index) => {
+                html += '<tr>'
+                html += `<td class="data">${data}</td>`
+                html += `<td><button class="deletebtn" onclick="deleteData(${index}) ">Remove</td>`
+                html += `<td><button class="editbtn" onclick="editData(${index})">Edit</td>`
+                html += `<td><button class="donebtn" onclick="doneData(${index})">Done</td>`    
+                html += `</tr>`
+
+
+            })
+
+            document.getElementById("tableShow").innerHTML = html;
+
+        }
+
+        function deleteData(i) {
+            arr_data.splice(i, 1);
+            showData()
+        }
+
+        function editData(i) {
+            
+            let x = arr_data[i];
+            document.getElementById("input_data").value=x;
+            document.getElementById("btnadd").innerHTML="update";
+
+            document.getElementById("btnadd").onclick=function()
+            {
+                document.getElementById("btnadd").innerHTML="add";
+                let update=document.getElementById("input_data").value;
+                arr_data.splice(i,1,update);
+                showData()
+                document.getElementById("input_data").value=''
+
+            }
+        }
+
+        function doneData(i){
+            let donevalue=arr_data[i]
+            arr_data.splice(i,1)
+            showData()
+            document.getElementById("done").innerHTML=`<h1 class="completed">Congartulation You Completed !! ${donevalue}</h1> `
+
+
+        }
+
+    </script>
+</body>
+
+</html>

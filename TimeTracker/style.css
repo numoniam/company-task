@@ -1,0 +1,125 @@
+body {
+    background-color: rgb(193, 223, 236);
+    /* background-image: url('1489353.jpg'); */
+}
+
+.savan {
+    font-size: 40px;
+    margin-top: 60px;
+    margin-left: 650px;
+}
+
+.todo {
+    font-size: 40px;
+    margin-left: 700px;
+
+}
+
+.input {
+    padding: 8px;
+    border-radius: 4px;
+    border: none;
+}
+
+.addbtn {
+    padding: 10px;
+    border-radius: 6px;
+    background-color: rgb(127, 179, 240);
+    border: none;
+
+}
+.deletebtn {
+    padding: 10px;
+    border-radius: 6px;
+    background-color:rgb(240, 100, 100) ;
+    border: none;
+
+}
+.editbtn {
+    padding: 10px;
+    border-radius: 6px;
+    background-color: rgb(171, 248, 94);
+    border: none;
+
+}
+.donebtn{
+    padding: 10px;
+    border-radius: 6px;
+    background-color: rgb(43, 220, 229);
+    border: none;
+}
+
+#tableShow {
+    margin-left: 650px;
+}
+
+.data {
+    border: 1px solid black;
+    background-color: rgb(248, 248, 248);
+    padding: 4px;
+    border-radius: 4px;
+    margin-left: 20px;
+    border: none;
+}
+
+/* for Stop Watch*/
+.container {
+    display: flex;
+    margin-left: 80px;
+}
+
+.mainDiv {
+    display: flex;
+    padding-top: 10px;
+    margin-left: 100px;
+}
+
+.timeDiv {
+    display: flex;
+    padding-left: 750px;
+}
+
+.btnDiv {
+    text-align: center;    
+}
+
+.box {
+    border: 1px solid black;
+}
+
+.startbtn {
+    background-color: rgb(240, 100, 100);
+    padding: 8px;
+    border-radius: 4px;
+    color: black;
+    border: none;           
+}
+
+.stopbtn {
+    background-color: rgb(153, 213, 94);
+    padding: 8px;
+    border-radius: 4px;
+    color: black;
+    border: none;
+}
+
+.resetbtn {
+    background-color: rgb(234, 213, 93);
+    padding: 8px;
+    border-radius: 4px;
+    color: black;
+    border: none;
+}
+
+.resumebtn {
+    background-color: rgb(127, 179, 240);
+    padding: 8px;
+    border-radius: 4px;
+    color: black;
+    border: none;
+}
+
+.completed{
+    color: green;
+    text-align: center;
+}
