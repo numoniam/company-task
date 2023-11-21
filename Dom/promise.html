@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let promise1=new Promise((resolve,reject)=>{
+            resolve("promise1");
+
+        })
+        
+        let promise2=new Promise((resolve,reject)=>{
+            // resolve("promise is resolve")
+            resolve("promise2")
+
+        })
+
+        let promise3=new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve("promise3")
+            },2000)
+
+        })
+
+        Promise.all([promise1,promise2,promise3]).then((result)=>{
+            console.log(result);
+        })
+
+       promise3.then((result)=>{
+           console.log(result);
+
+           return result + " in the rapidops inc"
+       }).then((savan)=>{
+        console.log(savan);
+       })
+
+
+    //    function getUser(onSuccess){
+
+    //     return new Promise((resolve,reject)=>{
+    //         setTimeout(()=>{
+    //             if(onSuccess)
+    //             {
+    //                 resolve([
+    //                     {id:1,name:'savan'},
+    //                     {id:2,name:'hiren'},
+    //                     {id:3,name:'ravi'}
+    //                 ])
+    //             }
+    //             else
+    //             {
+    //                 reject("failed to fetch the data")
+    //             }
+    //         },3000)
+    //     })
+
+    //    }
+
+    //    getUser(true).then((response)=>{
+    //     console.log(response);
+    //    }).catch((err)=>{
+    //     console.log(err);
+    //    })
+
+
+       //-------------------------------------------
+
+       fetch("https://api.github.com/users/octocat")
+       .then((response)=>{
+        return response.json()
+       }).then((result)=>{
+        console.log(result);
+       }).cath((err)=>{
+        console.log(err);
+       })
+
+       //------------------------------------------------
+
+
+    //    async function getUser(){
+    //     try{
+    //     let response=await fetch("https://api.github.com/users/octocat")
+    //     let data= await response.json()
+
+    //     console.log(data);
+    //     }
+    //     catch(error){
+    //         console.log(error);
+    //     }
+    //    }
+
+    //    getUser()
+    </script>
+</body>
+
+</html>

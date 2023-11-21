@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // class Savan{
+        //     constructor(name){
+        //         this.name=name;
+        //     }
+
+        //     get current(){
+        //         return this.name
+        //     }
+
+        //     set current(name){
+        //         this.name=name
+        //     }
+        // }
+
+        // let s1=new Savan("nency")
+
+        // console.log(s1.current="unnati");
+
+        // console.log(s1.name);
+
+//------------------------------------------------------------------------------
+
+        // let Person=class Person1{
+        //     constructor(name,age)
+        //     {
+        //         this.name=name;
+        //         this.age=age;
+        //     }
+        // }
+
+        // let user=new Person("Dinkal",22)
+        // let user2=new Person1("Shruti",24)
+
+        // console.log(user.name);
+        // console.log(user.age);
+
+        // console.log(user2.name);
+        // console.log(user2.age);
+
+//----------------------------------------------------------------------------------        
+
+        // class Hello{
+        //     language=[]
+
+        //     get current()
+        //     {
+        //         console.log(this.language[this.language.length-1]);
+        //     }
+        //     set current(lang)
+        //     {
+        //         this.language.push(lang)
+        //     }
+        // }
+
+        // let l1=new Hello()
+        // let l2=new Hello()
+        // l1.current="english"
+        // l1.current="hindi"
+        // console.log(l1.language);
+        // l1.current
+
+  //------------------------------------------------------------------------------------  
+  
+    //   class StaticName{
+    //     age=23
+    //     static name="savan"
+
+    //     static getname()
+    //     {
+    //         console.log(this.name,StaticName.name);
+    //     }
+    //   }
+
+    //   let person1=new StaticName()
+    //   StaticName.getname()
+
+    //---------------------------------------------------------------------------------------
+
+    // class Animal{
+    //     constructor(name)
+    //     {
+    //         this.name=name
+    //     }
+
+    //     eat()
+    //     {
+    //         console.log("animal can eat anything");
+    //     }
+    // }
+
+    // class Dog extends Animal{
+    //     constructor(name,eat) {
+    //         super(name)
+    //         this.thing=eat
+    //     }
+
+    //     eat()
+    //     {
+    //         super.eat()
+    //         console.log(this.name +" "+ "is" + " "+"eat"+thing);
+    //     }
+    // }
+
+    // let s1=new Dog("kutta","biscuit")
+
+    // s1.eat()
+
+//-----------------------------------------------------------------------------------------
+    // class Person{
+    //     #privatename
+
+    //     constructor() {
+    //         this.#privatename="savan"
+            
+    //     }
+    //     logPrivateField()
+    //     {
+    //         console.log(this.#privatename);
+    //     }
+    // }
+
+    // class SubClass extends Person{
+    //     #subPrivateField
+
+    //     field=11
+
+    //     constructor(){
+    //         super();
+    //         this.#subPrivateField=23
+    //     }
+    // }
+
+    // let sub=new SubClass()
+
+    // console.log(sub.field);
+    // console.log(sub);
+    // sub.logPrivateField()
+
+    //-----------------------------------------------------------------------------------
+
+    // class Person{
+    //     _protectedProp=0
+        
+    //     set protectedProp(value)
+    //     {
+    //       if(value>100)
+    //       {
+    //         this._protectedProp=0
+    //       }
+    //       else
+    //       {
+    //         this._protectedProp=value
+    //       }
+    //     }
+
+    //     get protectedProp()
+    //     {
+    //         console.log(this._protectedProp);
+    //     }
+    
+    // }
+
+    // let s1=new Person()
+
+    // s1.protectedProp="20"
+
+    // console.log(s1._protectedProp);
+
+
+    //------------------------------------------------------------------------------------
+
+
+    // class Person{
+    //     readOnly=10;
+
+    //     get current()
+    //     {
+    //         return this.readOnly
+    //     }
+    // }
+
+    // let s1=new Person()
+
+    // console.log(s1.current);
+
+    //--------------------------------------------------------------------------------------------
+
+    class Person{
+        constructor(name)
+        {
+            this.name=name
+        }
+
+        sayHi()
+        {
+            return function(){
+                console.log(this);
+                console.log(this.name,this);
+            }
+        }
+
+        sayHello()
+        {
+            const hi=()=>{
+                console.log("digo");
+                console.log(this.name,this);
+            }
+            hi()
+        }
+    }
+
+    let savan=new Person("hello")
+
+    // savan.sayHi()()
+    savan.sayHello()
+
+    </script>
+</body>
+</html>

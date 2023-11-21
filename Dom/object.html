@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let data=[
+        //     {name:'a',type:'1',score:3},
+        //     {name:'b',type:'2',score:4},
+        //     {name:'c',type:'1',score:5},
+        //     {name:'d',type:'3',score:8},
+        // ]
+
+        // let new_data=[]
+        // let new_obj={
+        //     type:'1',
+        //     score:3
+        // }
+        // new_data.push(new_obj)
+        
+
+        // for(let i in data)
+        // {
+        //     for(let j in new_data)
+        //     {
+        //         if(data[i].type !== new_data[i].type)
+        //         {
+        //             let obj={
+        //                 type:data[i].type,
+        //                 score:data[i].score
+        //             }
+        //             new_data.push(obj)
+        //         }
+
+        //         if(data[i].type===new_data[j].type)
+        //         {
+        //             new_data[j].score=new_data[j].score+data[i].score
+
+        //         }
+        //     }
+        // }
+
+        // console.log(new_data);
+        
+        //------------------------------------------------------------------------------------------
+        let data=[
+            {name:'a',type:'1',score:3},
+            {name:'b',type:'2',score:4},
+            {name:'c',type:'1',score:5},
+            {name:'d',type:'3',score:8},
+        ]
+
+        let new_data=[]
+
+        let obj={}
+        obj.type='1';
+        obj.score=3;
+        new_data.push(obj)
+
+        
+
+        for(let i=1;i<data.length;i++)
+        {
+            
+            for(let j in new_data)
+            {
+                if(data[i].type !== new_data[j].type)
+                {
+                    let new_obj={}
+                    new_obj.type=data[i].type
+                    new_obj.score=data[i].score
+                    new_data.push(new_obj)
+                }
+                if(data[i].type == new_data[j].type)
+                {
+                    new_data[j].score=new_data[j].score+data[i].score
+                }
+            }
+            
+        }
+        let final_obj=[]
+
+        for(let i=1;i<4;i++)
+        {
+            let result=new_data.find((obj)=>{
+            if(obj.type==i)
+            {
+                return obj
+            }
+        })
+        final_obj.push(result)
+        }
+
+        
+        console.log(final_obj);
+
+        //------------------------------------------------------------------------------------------
+
+        
+        // let data=[
+        //     {name:'a',type:'1',score:3},
+        //     {name:'b',type:'2',score:4},
+        //     {name:'c',type:'1',score:5},
+        //     {name:'d',type:'3',score:8},
+        // ]
+
+        
+
+
+
+     
+        
+    </script>
+</body>
+</html>
