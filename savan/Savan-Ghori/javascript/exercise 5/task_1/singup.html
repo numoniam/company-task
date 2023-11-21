@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+        <form action="login.html">
+            <h1>Sign up</h1>
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" placeholder="Username" id="username" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" placeholder="Email Address" id="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" placeholder="Password" id="password" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" placeholder="Confirm Password" id="conpassword" class="form-control" required>
+            </div>
+            <div>
+                <select class="form-opt" id="role">
+                    <option>user</option>
+                    <option>admin</option>
+                </select>
+            </div>
+
+            <input type="submit" class="btn" value="SignUp" onclick="getvalue()">
+            <button class="btn"><a href="login.html">signin</a></button>
+        </form>
+    </div>
+
+    <script>
+        function getvalue() {
+            let username = document.getElementById("username").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let conpassword = document.getElementById("conpassword").value;
+            let role = document.getElementById("role").value;
+
+            if (role == "user") {
+                localStorage.setItem('username', username);
+                localStorage.setItem('email', email);
+                localStorage.setItem('password', password);
+                localStorage.setItem('conpassword', conpassword);
+                localStorage.setItem('role', role);
+            }
+            else {
+                localStorage.setItem('adminusername', username);
+                localStorage.setItem('adminemail', email);
+                localStorage.setItem('adminpassword', password);
+                localStorage.setItem('adminconpassword', conpassword);
+                localStorage.setItem('adminrole', role);
+            }
+
+        }
+    </script>
+</body>
+
+</html>

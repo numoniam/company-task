@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            margin-left: 30px;
+            display: inline-block;
+            margin-bottom: 80px;
+            margin-left: 180px;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #89d1f2;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: rgb(8, 8, 8);
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #5977b2;
+        }
+
+        #addjava,#addlinux,#addjavascript,#addnode{
+            background-color: rgb(95, 245, 117);
+            border-radius: 8px;
+            padding: 8px;
+        }
+
+        #deljava,#dellinux,#deljavasctipt,#delnode{
+            background-color: rgb(235, 150, 76);
+            border-radius: 8px;
+            padding: 8px;
+        }
+
+        .header{
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li><a class="active" href="#home">Home</a></li>
+            <li><a href="#Courses">Courses</a></li>
+            <li><a href="#Progress">Progress</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about">About</a></li>
+            <li style="float: right;"><a href="login.html" onclick="removeItem()">Logout</a></li>
+        </ul>
+
+    </div>
+    <br>
+    <br>
+    <div class="header">
+        <h1>Welcome to Admin page</h1>
+    </div>
+    <br>
+    <br>
+
+
+    <div class="container">
+        <div><img src="linux.png" style="height: 200px; width: 200px;"></div>
+        <button type="button" id="addlinux" onclick=addLinux()>Add</button>
+        <button type="button" id="dellinux" onclick=delLinux()>Delete</button>
+    </div>
+    <div class="container">
+        <div><img src="java.jpg" style="height: 200px; width: 200px;"></div>
+        <button type="button" id="addjava" onclick=addJava()>Add</button>
+        <button type="button" id="deljava" onclick=delJava()>Delete</button>
+    </div>
+    <div class="container">
+        <div><img src="node.png" style="height: 200px; width: 200px;"></div>
+        <button type="button" id="addnode" onclick=addNode()>Add</button>
+        <button type="button" id="delnode" onclick=delNode()>Delete</button>
+    </div>
+    <div class="container">
+        <div><img src="javascript.jpeg" style="height: 200px; width: 200px;"></div>
+        <button type="button" id="addjavascript" onclick=addJavascript()>Add</button>
+        <button type="button" id="deljavasctipt" onclick=delJavascript()>Delete</button>
+    </div>
+
+    <script>
+
+        function removeItem() {
+            sessionStorage.clear()
+        }
+
+        let linux = [
+            {
+                name: "linux",
+                img: "linux.png"
+            }];
+
+        let java = [
+            {
+                name: "java",
+                img: "java.jpg"
+            }];
+
+        let node = [
+            {
+                name: "node",
+                img: "node.png"
+            }];
+
+        let javascript = [
+            {
+                name: "javascript",
+                img: "javascript.jpeg"
+            }];
+
+        //adding
+        function addLinux() {
+            let course1 = localStorage.setItem('course1', JSON.stringify(linux));
+        }
+
+        function addJava() {
+            let course2 = localStorage.setItem('course2', JSON.stringify(java));
+
+        }
+
+        function addNode() {
+            let course3 = localStorage.setItem('course3', JSON.stringify(node));
+
+        }
+
+        function addJavascript() {
+            let course4 = localStorage.setItem('course4', JSON.stringify(javascript));
+
+        }
+
+
+        //delete
+        function delLinux() {
+            let course1 = localStorage.removeItem('course1', JSON.stringify(linux));
+
+        }
+
+        function delJava() {
+            let course2 = localStorage.removeItem('course2', JSON.stringify(java));
+
+        }
+
+        function delNode() {
+            let course3 = localStorage.removeItem('course3', JSON.stringify(node));
+
+        }
+
+        function delJavascript() {
+            let course4 = localStorage.removeItem('course4', JSON.stringify(javascript));
+
+        }
+    </script>
+
+
+</body>
+
+</html>

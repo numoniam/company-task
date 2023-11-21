@@ -1,0 +1,46 @@
+.button{
+    background-color:rgb(137, 179, 235);
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    font-size: 18px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.edit{
+    background-color:rgb(124, 183, 79);
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    font-size: 18px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.delete{
+    background-color:rgb(228, 98, 42);
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    font-size: 18px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.name{
+    border-color: rgb(24, 24, 24);
+    border-radius: 5px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <table>
+        <th>
+        <td><input type="text" placeholder="First Name" id="tr1" class="name"></td>
+        <td><input type="text" placeholder="Last Name" id="tr2" class="name"></td>
+        <td><button onclick="adding()" id="button" class="button">Add</button></td>
+        <td><button onclick="static()" id="button" class="button">Render Data</button></td>
+        
+        </th>
+    </table>
+
+    <table id="usr_table">
+
+    </table>
+    <script>
+        let usr_arr = [];
+        let static_data=[
+           {fanme:'savan',lname:'Ghori'},
+           {fanme:'savan',lname:'Ghori'},
+           {fanme:'savan',lname:'Ghori'},
+           {fanme:'savan',lname:'Ghori'},
+           {fanme:'savan',lname:'Ghori'},
+           {fanme:'savan',lname:'Ghori'},
+           {fanme:'Savan',lname:'Ghori'},
+           {fanme:'savan',lname:'Ghori'},
+           {fanme:'savan',lname:'Ghori'},
+           {fanme:'savan',lname:'Ghori'},
+           {fanme:'savan',lname:'Ghori'},
+           {fanme:'savan',lname:'Ghori'},
+           {fanme:'savan',lname:'Ghori'},
+           {fanme:'savan',lname:'Ghori'},
+           {fanme:'savan',lname:'Ghori'}
+        ]
+        function adding() {
+            let x = document.getElementById("tr1").value;
+            let y = document.getElementById("tr2").value;
+            function makeObj() {
+                return {
+                    fname: x,
+                    lname: y
+                }
+            }
+            let user = makeObj();
+            usr_arr.push(user);
+            showTable();
+
+        }
+
+        function showTable() {
+            let table = " ";
+            usr_arr.map((user, index) => {
+
+                table += "<tr>"
+
+                for (let item in user) {
+                    table += `<td><input type="text" value="${user[item]}" class="name"></td>`
+                }
+                table += `<td><input type="button" value="Edit" id="${index}" onclick="edit(${index})" class="edit"></td><td><input type="button" value="Delete" id="${index}" onclick="deletes(${index})" class="delete"></td>`
+
+                table += "</tr>"
+            })
+            document.getElementById("usr_table").innerHTML = table;
+        }
+
+        function deletes(i) {
+            usr_arr.splice(i, 1);
+            showTable();
+        }
+
+        function edit(i) {
+
+            tr1.value = usr_arr[i].fname;
+            tr2.value = usr_arr[i].lname;
+            valEdit = true;
+            buttonHandler(i);
+        }
+
+
+        function buttonHandler(i) {
+
+            if (valEdit) {
+                document.getElementById("button").innerHTML = "Update"
+                document.getElementById("button").onclick = function () {
+
+                    let user = {
+                        fname: tr1.value,
+                        lname: tr2.value,
+                    }
+                    usr_arr.splice(i, 1, user)
+                    showTable();
+                    isEdit = false;
+                    buttonHandler(0);
+                    document.getElementById("button").innerHTML = "Add"
+                    document.getElementById("button").onclick = function () {
+                        adding();
+                    } 
+                } 
+            } 
+           
+        }
+
+        function static()
+        {
+            static_data.forEach(function(data){
+                usr_arr.push(data);
+            })
+
+            showTable();
+        }
+
+    </script>
+    
+</body>
+</html>

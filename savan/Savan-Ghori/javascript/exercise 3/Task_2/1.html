@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function sport() {
+            let arr = [
+                {
+                    name: 'ravindra',
+                    sports: ['chess', 'cricket'],
+
+                },
+
+                {
+                    name: 'ravi',
+                    sports: ['cricket', 'football'],
+
+                },
+
+                {
+                    name: 'rishabh',
+                    sports: ['tableTennis', 'football'],
+
+                },
+            ]
+            
+            let outArr=[];
+
+            outArr.chess;
+            outArr.cricket;
+            outArr.football;
+            outArr.tableTannis;
+
+            function action()
+            {
+                for(let i=0;i<arr.length;i++)
+                {
+                    
+                    let sarr=arr[i].sports;
+
+                    for(let j=0;j<sarr.length;j++)
+                    {
+                        if(sarr.includes("chess"))
+                        {
+                            outArr.chess=arr[i].name;
+                        }
+
+                        if(sarr.includes("cricket"))
+                        {
+                            outArr.cricket=arr[i].name;
+                        }
+                        if(sarr.includes("football"))
+                        {
+                            outArr.football=arr[i].name;
+                        }
+                        if(sarr.includes("tableTennis"))
+                        {
+                            outArr.tableTannis=arr[i].name;
+                        }
+
+                    }
+                
+                }
+                return outArr;
+                
+            }
+            action();
+            console.log(action());
+        }
+        sport();
+    </script>
+
+</body>
+
+</html>

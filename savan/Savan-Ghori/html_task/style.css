@@ -1,0 +1,112 @@
+.logo1{
+    font-size: 30px;
+
+}
+.logo2{
+    font-size:15px;
+}
+
+.navbar{
+    list-style: none;
+    margin-left:5px;
+    position: absolute;
+    right: 0;
+}
+.navbar ul{
+    padding: 0px;
+    list-style: none;
+
+}
+.navbar li{
+    display: inline;
+}
+.link{
+    text-decoration: none;
+    color: black;
+}
+
+.img1{
+    width:500px;
+    height: 400px;
+}
+.img2{
+    width:400px;
+    height: 300px;
+}
+
+img{
+    width:300px;
+    height: 200px;
+}
+
+.b1{
+    border-top:10px solid skyblue;
+    color: rgb(3, 3, 3);
+    text-decoration: none;
+}
+
+.container-1{
+    display: flex;
+    padding-top: 40px;
+}
+.container-1 div{
+    padding:10px;
+}
+.box-1{
+    flex:1;
+    order:2;
+}
+.box-2{
+    flex: 1;
+    order: 1;
+}
+.box-3{
+    flex:1;
+    order:3;
+
+}
+.p1{
+    text-align: center;
+    font-size: 25px;
+    margin-top: 43px;
+    font-family:italic;
+}
+
+.title{
+    display: flex;
+    padding-left: 300px;
+    padding-top: 50px;
+}
+
+.t1{
+    padding-left:60px;
+    padding-top: 100px;
+}
+
+.s1{
+    display: flex;
+}
+
+footer { 
+    background-color: #242527;
+    color: azure;
+}
+
+.savan {
+    display: flex;
+    justify-content: space-between;
+    margin: 2em;
+    margin-left: 11em;
+    margin-right: 11em;
+}
+
+.m{
+    color: dodgerblue;
+}
+
+.btn{
+    background-color: rgb(140, 192, 177)
+    
+}
+
+

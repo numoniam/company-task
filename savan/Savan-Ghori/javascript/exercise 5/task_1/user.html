@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="viewport" content="width=<device-width>, initial-scale=1.0"> -->
+    <title>user</title>
+    <style>
+       
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #89d1f2;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: rgb(8, 8, 8);
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #5977b2;
+        }
+
+       .savan{
+        display: inline-block;
+        margin-left: 180px;
+       }
+
+       .btn{
+        background-color: rgb(116, 202, 238);
+        padding: 10px;
+        border-radius: 8px;
+        
+       }
+
+    </style>
+</head>
+
+<body onload="load()">
+    <div>
+        <ul>
+            <li><a class="active" href="#home">Home</a></li>
+            <li><a href="#Courses">Courses</a></li>
+            <li><a href="#Progress">Progress</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about">About</a></li>
+            <li style="float: right;"><a href="login.html">Logout</a></li>
+          </ul>
+          
+    </div>
+    <br>
+    <br>
+    <br>
+
+
+    <div class="courses" id="courses"></div>
+    <script>
+        let getcourse1 = JSON.parse(localStorage.getItem('course1'));
+        let getcourse2 = JSON.parse(localStorage.getItem('course2'));
+        let getcourse3 = JSON.parse(localStorage.getItem('course3'));
+        let getcourse4 = JSON.parse(localStorage.getItem('course4'));
+
+        function load() {
+            if (getcourse1 == null) {
+
+            }
+            else {
+                function addcourse1() {
+                    getcourse1 = JSON.parse(localStorage.getItem('course1'));
+                    document.getElementById("courses").innerHTML += `<div class="savan">
+                    <img src="linux.png" style="width:150px;heigth:150px">
+                    <h3>${getcourse1[0].name}</h3><button class="btn">View</button></div>`
+                }
+
+                addcourse1();
+            }
+
+
+            if (getcourse2 == null) {
+            }
+            else {
+                function addcourse2() {
+                    getcourse2 = JSON.parse(localStorage.getItem('course2'));
+                    document.getElementById("courses").innerHTML += `<div class="savan">
+                    <img src="java.jpg" style="width:150px;heigth:150px">
+                    <h3>${getcourse2[0].name}</h3><button class="btn">View</button></div>`
+                }
+                addcourse2();
+            }
+
+            if (getcourse3 == null) {
+            }
+            else {
+                function addcourse3() {
+                    getcourse3 = JSON.parse(localStorage.getItem('course3'));
+                    document.getElementById("courses").innerHTML += `<div class="savan">
+                    <img src="node.png" style="width:150px;heigth:150px">
+                    <h3>${getcourse3[0].name}</h3><button class="btn">View</button></div>`
+                }
+
+                addcourse3();
+            }
+
+            if (getcourse4 == null) {
+            }
+            else {
+                function addcourse4() {
+                    getcourse4 = JSON.parse(localStorage.getItem('course4'));
+                    document.getElementById("courses").innerHTML += `<div class="savan">
+                    <img src="javascript.jpeg" style="width:150px;heigth:150px">
+                    <h3>${getcourse4[0].name}</h3><button class="btn">View</button></div>`
+                }
+                addcourse4();
+            }
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            background-color: gold;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="search" oninput="data()">
+    <ul id="demo"></ul>
+    <script>
+
+        let static_data = [
+            "savan ghori",
+            "vivek dhameliya",
+            "smit dholiya",
+            "malhar gadhiya",
+            "dabhi hiren",
+            "ravi sutariya",
+            "sagar ghori",
+            "hiren sarkar",
+            "ashish sha",
+            "yash dube",
+            "prakash jain",
+            "rohit sharma",
+            "virat kholi",
+            "ravi jadeja",
+            "vikash prajapati",
+            "piyush chawla",
+            "kl rahul",
+            "sky kumar"
+
+        ];
+
+        function data() {
+            let input = document.getElementById("search").value;
+            let add = document.getElementById("demo");
+
+            let result = []
+            // console.log(input);
+
+            for (let i in static_data) {
+                // console.log(i);
+
+                if (input.length < 2) {
+                    break;
+                }
+                if (static_data[i].includes(input)) {
+                    // console.log("hello");
+                    let index = static_data[i].indexOf(input);
+
+                    if (index >= 0) {
+
+                        let str = "";
+                        str += static_data[i].slice(0, index);
+
+                        let substring = static_data[i].slice(index, (index + input.length));
+
+                        str += '<span>'
+                        str += substring;
+                        str += '</span>'
+
+                        str += static_data[i].slice((index + input.length), static_data[i].length);
+
+                        result.push(str)
+
+                    }
+
+
+                }
+
+
+            }
+
+            let li = ""
+            for (let item of result) {
+                li += `<li>${item}</li>`
+                // alert(li);
+            }
+
+            add.innerHTML = li
+
+        }
+    </script>
+</body>
+
+</html>
+

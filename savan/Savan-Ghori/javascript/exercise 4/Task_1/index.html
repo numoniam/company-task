@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div>
+            <p id="p1">Time:</p>
+        </div>
+        <div>
+            <p id="p2" style="margin-left:20px;">Date:</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div>StopWatch:</div>
+        <div id="stopwatch" style="margin-left: 7px;">00:00:00:00</div>
+    </div>
+    </br>
+
+    <button class="s1" id="start" onclick="startTimer()">Start</button>
+    <button class="s2" id="stop" onclick="stopTimer()">Stop</button>
+    <button class="s3" id="resume" onclick="resumeTimer()">Resume</button>
+    <button class="s4" id="reset" onclick="resetTimer()">Reset</button>
+
+    <script>
+        let date = new Date();
+        let current_time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+        document.getElementById("p1").innerHTML += current_time;
+
+
+        let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        let current_date = date.getDate() + "-" + months[date.getMonth()] + "-" + date.getFullYear();
+        document.getElementById("p2").innerHTML += current_date;
+
+
+
+        document.getElementById("reset").disabled = true;
+        document.getElementById("stop").disabled = true;
+        document.getElementById("resume").disabled = true;
+        //stopwatch
+        let timer = document.getElementById("stopwatch")
+        let hr = 0;
+        let min = 0;
+        let sec = 0;
+        let msec = 0;
+        let counter = 0;
+        let stop = true; //time stop not in running state
+
+        function startTimer() {
+            if (stop) {
+                stop = false //that means it not in stop position
+                timerCycle();
+            }
+            document.getElementById("stop").disabled = false;
+            document.getElementById("reset").disabled = false;
+            document.getElementById("resume").disabled = false;
+        }
+
+        function stopTimer() {
+
+            if (!stop) {
+                stop = true; //that means it is in stop position
+            }
+            document.getElementById("start").disabled = true;
+
+        }
+        function resumeTimer() {
+            startTimer();
+
+        }
+
+        function timerCycle() {
+            if (!stop) {
+                sec = parseInt(sec);
+                min = parseInt(min);
+                hr = parseInt(hr);
+                msec = parseInt(msec);
+                counter = parseInt(counter)
+
+                counter++;
+
+                if (counter == 100) {
+                    sec = sec + 1;
+                    counter = 0;
+                }
+
+
+                if (sec == 60) {
+                    min = min + 1;
+                    sec = 0;
+                }
+
+                if (min == 60) {
+                    hr = hr + 1;
+                    min = 0;
+                    sec = 0;
+                }
+
+                if (sec < 10) {
+                    sec = "0" + sec; //if second single digit add 0
+                }
+
+                if (min < 10) {
+                    min = "0" + min;
+                }
+
+                if (hr < 10) {
+                    hr = "0" + hr;
+                }
+
+                timer.innerHTML = hr + ':' + min + ':' + sec + ':' + counter;
+
+                setTimeout(timerCycle, 10); //call function ever one second
+            }
+        }
+
+        function resetTimer() {
+            document.getElementById("start").disabled = false;
+            timer.innerHTML = "00:00:00:00";
+            stop = true;
+            hr = 0;
+            sec = 0;
+            min = 0;
+        }
+
+    </script>
+
+</body>
+
+</html>
