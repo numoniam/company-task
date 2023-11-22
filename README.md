@@ -14,6 +14,6 @@ Solr  <br>
 CockroachDb  <br>
 MySql  <br>
 Joi validation  <br>
-Databse Migration  <br>
-Cron Job  <br>
+Database Migration  <br>
+Cron Jobs  <br>
 Microservices <br>
